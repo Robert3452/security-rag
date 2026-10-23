@@ -49,5 +49,5 @@ testpaths = ["tests"]
 pythonpath = ["."]
 
 [[tool.mypy.overrides]]
-module = ["pytesseract.*", "pgvector.*"]
+module = ["pytesseract.*", "pgvector.*","pypdfium2.*"]
 ignore_missing_imports = true

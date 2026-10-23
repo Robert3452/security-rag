@@ -82,7 +82,7 @@ def needs_ocr(text: str, min_chars: int = MIN_CHARS, min_quality: float = MIN_QU
 
 def _ocr_page(page: pdfium.PdfPage, lang: str) -> str:
     bitmap = page.render(scale=OCR_SCALE)
-    return pytesseract.image_to_string(bitmap.to_pil(), lang=lang)
+    return str(pytesseract.image_to_string(bitmap.to_pil(), lang=lang))
 
 
 def extract_pages(path: Path, language: str) -> Iterator[PageText]:
