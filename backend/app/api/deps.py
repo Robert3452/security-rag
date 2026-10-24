@@ -14,3 +14,4 @@ def get_embedder(request: Request) -> Embedder:
 
 
 SessionDep = Annotated[AsyncSession, Depends(get_session)]
+EmbedderDep = Annotated[Embedder, Depends(get_embedder)]

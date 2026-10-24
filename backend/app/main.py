@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.api.routes import health
+from app.api.routes import health, ingest
 from app.core.config import get_settings
 from app.embeddings.e5 import E5Embedder
 
@@ -23,6 +23,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 def create_app() -> FastAPI:
     app = FastAPI(title="Rag Normativa de seguridad", version="0.1.0")
     app.include_router(health.router)
+    app.include_router(ingest.router)
     return app
 
 

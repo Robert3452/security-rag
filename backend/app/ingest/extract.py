@@ -85,7 +85,7 @@ def _ocr_page(page: pdfium.PdfPage, lang: str) -> str:
     return str(pytesseract.image_to_string(bitmap.to_pil(), lang=lang))
 
 
-def extract_pages(path: Path, language: str) -> Iterator[PageText]:
+def extract_pages(path: Path | bytes, language: str) -> Iterator[PageText]:
     ocr_lang = OCR_LANGS.get(language, "eng")
     pdf = pdfium.PdfDocument(path)
 
