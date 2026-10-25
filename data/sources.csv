@@ -1,11 +1,65 @@
-id,title,url,language,License
-1,OSHA Seguridad eléctrica,https://www.osha.gov/sites/default/files/publications/OSHA3294_SP.pdf,es,Departamento de trabajo de Estados Unidos
-2,Cómo trabajar de manera segura cerca de cables eléctricos caídos,https://www.osha.gov/sites/default/files/publications/OSHA4479.pdf,es,OSHA
-3,Estar al tanto de los peligros del arco eléctrico,https://www.osha.gov/sites/default/files/publications/OSHA4486.pdf,es,OSHA
-4,Mitos comunes sobre el trabajo eléctrico,https://www.osha.gov/sites/default/files/publications/OSHA4484.pdf,es,OSHA
-5,Cómo establedcer límites en torno a los riesgos de arco eléctrico,https://www.osha.gov/sites/default/files/publications/OSHA4485.pdf,es,OSHA
-6,Riesgo para los trabajadores en el suelo si los cables de sujeción entran en contacto con líneas energizadas,https://www.osha.gov/sites/default/files/publications/OSHA4381.pdf,es,OSHA
-7,"Cables de extensión, 5 cosas que debes saber",https://www.osha.gov/sites/default/files/publications/OSHA4501.pdf,es,OSHA
-8,Bloqueo y etiquetado,https://www.osha.gov/sites/default/files/publications/LOCKOUT-TAGOUT-SPANISH.pdf,es,OSHA
-9,Seguridad eléctrica en la construcción,https://www.osha.gov/sites/default/files/publications/OSHA4500.pdf,es,OSHA
-10,Aprueban reglamento de seguridad y Salud en el trabajo con Electricidad 2013,https://buenaventura.com/wp-content/uploads/2024/10/RM-111-2013-EM-DM-Reglamento-de-Seguridad-y-Salud-en-el-Trabajo-en-Electricidad.pdf,es,El peruano
+id,title,url,kind,language,License
+osha-3294-es,OSHA Seguridad eléctrica,https://www.osha.gov/sites/default/files/publications/OSHA3294_SP.pdf,pdf,es,Departamento de trabajo de Estados Unidos
+osha-4479-es,Cómo trabajar de manera segura cerca de cables eléctricos caídos,https://www.osha.gov/sites/default/files/publications/OSHA4479.pdf,pdf,es,OSHA
+osha-4486-es,Estar al tanto de los peligros del arco eléctrico,https://www.osha.gov/sites/default/files/publications/OSHA4486.pdf,pdf,es,OSHA
+osha-4484-es,Mitos comunes sobre el trabajo eléctrico,https://www.osha.gov/sites/default/files/publications/OSHA4484.pdf,pdf,es,OSHA
+osha-4485-es,Cómo establedcer límites en torno a los riesgos de arco eléctrico,https://www.osha.gov/sites/default/files/publications/OSHA4485.pdf,pdf,es,OSHA
+osha-4381-es,Riesgo para los trabajadores en el suelo si los cables de sujeción entran en contacto con líneas energizadas,https://www.osha.gov/sites/default/files/publications/OSHA4381.pdf,pdf,es,OSHA
+osha-4501-es,"Cables de extensión, 5 cosas que debes saber",https://www.osha.gov/sites/default/files/publications/OSHA4501.pdf,pdf,es,OSHA
+osha-lockouttagout-es,Bloqueo y etiquetado,https://www.osha.gov/sites/default/files/publications/LOCKOUT-TAGOUT-SPANISH.pdf,pdf,es,OSHA
+osha-4500-es,Seguridad eléctrica en la construcción,https://www.osha.gov/sites/default/files/publications/OSHA4500.pdf,pdf,es,OSHA
+buenaventura-1,Aprueban reglamento de seguridad y Salud en el trabajo con Electricidad 2013,https://buenaventura.com/wp-content/uploads/2024/10/RM-111-2013-EM-DM-Reglamento-de-Seguridad-y-Salud-en-el-Trabajo-en-Electricidad.pdf,pdf,es,El peruano
+osha-electrical-hazard-en,Incorrectly Refurbished Circuit Breakers,https://www.osha.gov/sites/default/files/publications/ELECTRICAL_HAZARD_ALERT.pdf,pdf,en,OSHA
+osha-3719-en,"Electric Power Generation, Transmision and Distribution and Electrical Protective Equipment Final Rule",https://www.osha.gov/sites/default/files/publications/OSHA3719.pdf,pdf,en,OSHA
+osha-3875-en,"Electric Power Generation, Transmission and Distribution: Electrical Protective Equipment Requirements",https://www.osha.gov/sites/default/files/publications/OSHA3875.pdf,pdf,en,OSHA
+osha-4479-en,Working Safely Around Downed Electrical Wires,https://www.osha.gov/sites/default/files/publications/DOWNED_ELECTRICAL_WIRES.pdf,pdf,en,OSHA
+osha-3294-en,ELECTRICAL SAFETY,https://www.osha.gov/sites/default/files/publications/OSHA3294.pdf,pdf,en,OSHA
+osha-4475-en,Being Aware of Arc Flash Hazards,https://www.osha.gov/sites/default/files/publications/OSHA4475.pdf,pdf,en,OSHA
+osha-4473-en,Common Electrical Work Myths ,https://www.osha.gov/sites/default/files/publications/OSHA4473.pdf,pdf,en,OSHA
+osha-4474-en,Establishing Boundaries Around Arc Flash Hazards,https://www.osha.gov/sites/default/files/publications/OSHA4474.pdf,pdf,en,OSHA
+osha-4380-en,Hazards to workers on the ground if guy wires contact energized lines,https://www.osha.gov/sites/default/files/publications/OSHA4380.pdf,pdf,en,OSHA
+osha-3942-en,Working Safely with Electricity,https://www.osha.gov/sites/default/files/publications/OSHA3942.pdf,pdf,en,OSHA
+osha-4495-en,Extension cords 5 things to know,https://www.osha.gov/sites/default/files/publications/OSHA4495.pdf,pdf,en,OSHA
+pe-cne-util-2006,Código Nacional de Electricidad - Utilización,https://spij.minjus.gob.pe/Graficos/Peru/2006/Enero/30/RM-037-2006.pdf,html,es,Ministerio de Energía y Minas
+pe-cne-util-mod-2008,Modificación del Código Nacional de Electricidad - Utilización,https://cdn.www.gob.pe/uploads/document/file/95104/RM_175_2008_DM.pdf,pdf,es,Ministerio de Energía y Minas
+pe-cne-sum-2011,Código Nacional de Electricidad - Suministro 2011,https://cdn.www.gob.pe/uploads/document/file/95751/RM_214_2011_DM.pdf,pdf,es,Ministerio de Energía y Minas
+pe-resesate-2013,Reglamento de Seguridad y Salud en el Trabajo con Electricidad (RESESATE),https://www.osinergmin.gob.pe/seccion/centro_documental/PlantillaMarcoLegalBusqueda/RM-111-2013-MEM-DM.pdf,pdf,es,Ministerio de Energía y Minas / Osinergmin
+pe-rne-em010-2019,Norma Técnica EM.010 - Instalaciones Eléctricas Interiores del RNE,https://cdn.www.gob.pe/uploads/document/file/297936/RM_-_083-2019-VIVIENDA.pdf,pdf,es,"Ministerio de Vivienda, Construcción y Saneamiento"
+pe-ley-29783,Ley de Seguridad y Salud en el Trabajo,https://cdn.www.gob.pe/uploads/document/file/571762/Ley_N__29783.pdf,pdf,es,Congreso de la República
+pe-ds-005-2012-tr,Reglamento de la Ley de Seguridad y Salud en el Trabajo,https://cdn.www.gob.pe/uploads/document/file/571763/Decreto_Supremo_N__005-2012-TR.pdf,pdf,es,Ministerio de Trabajo y Promoción del Empleo
+pe-ds-001-2021-tr,Modificatoria del Reglamento de la Ley 29783,https://cdn.www.gob.pe/uploads/document/file/1616762/Decreto-supremo-n-001-2021-TR.pdf,pdf,es,Ministerio de Trabajo y Promoción del Empleo
+pe-rm-050-2013-tr,Formatos referenciales de registros del Sistema de Gestión de SST,https://cdn.www.gob.pe/uploads/document/file/350741/050-2013-TR.pdf,pdf,es,Ministerio de Trabajo y Promoción del Empleo
+pe-rm-050-2013-tr-1,Formatos referenciales de registros del Sistema de Gestión de SST - ANEXOS,https://cdn.www.gob.pe/uploads/document/file/350742/Anexos.pdf,pdf,es,Ministerio de Trabajo y Promoción del Empleo
+pe-rne-g050-redes-energia-electrica,RNE G.050 - Seguridad durante la construcción - Redes de distribucion de energia electrica,https://cdn.www.gob.pe/uploads/document/file/2366436/27%20EC.%20010%20REDES%20DE%20DISTRIBUCION%20DE%20ENERGIA%20ELECTRICA.pdf,pdf,es,"Ministerio de Vivienda, Construcción y Saneamiento"
+pe-rne-ec010,RNE EC.010 - Redes de distribución de energía eléctrica,https://cdn.www.gob.pe/uploads/document/file/2366483/29%20EC.%20030%20SUBESTACIONES%20ELECTRICAS.pdf,pdf,es,"Ministerio de Vivienda, Construcción y Saneamiento"
+pe-rne-ec020,RNE EC.020 - Redes de alumbrado público,https://cdn.www.gob.pe/uploads/document/file/2366450/28%20EC.%20020%20REDES%20DE%20ALUMBRADO%20PUBLICO.pdf,pdf,es,"Ministerio de Vivienda, Construcción y Saneamiento"
+pe-rne-ec030,RNE EC.030 - Subestaciones eléctricas,https://cdn.www.gob.pe/uploads/document/file/2366690/62%20EM.010%20INSTALACIONES%20EL%C3%89CTRICAS%20INTERIORES%20-%20RM%20N%C2%B0%20083-2019-VIVIENDA.pdf,pdf,es,"Ministerio de Vivienda, Construcción y Saneamiento"
+pe-rne-em100,RNE EM.100 - Instalaciones de alto riesgo,https://cdn.www.gob.pe/uploads/document/file/2366725/71%20EM.100%20INSTALACIONES%20DE%20ALTO%20RIESGO.pdf,pdf,es,"Ministerio de Vivienda, Construcción y Saneamiento"
+pe-osinergmin-electricidad-2018,Folleto de uso seguro de electricidad,https://www.osinergmin.gob.pe/seccion/centro_documental/Folleteria/16-Electricidad.pdf,pdf,es,Osinergmin
+pe-inacal-referencias-ntp-2026,Listado de NTP referidas en dispositivos de carácter obligatorio (mayo 2026),https://cdn.www.gob.pe/uploads/document/file/9256657/6844086-boletin-de-normas-obligatorias-2026-mayo.pdf,pdf,es,INACAL
+pe-minem-manual-interpretacion-cne-2001,MANUAL DE INTERPRETACIÓN DEL CÓDIGO NACIONAL DE ELECTRICIDAD – SUMINISTRO 2001,https://cdn.www.gob.pe/uploads/document/file/5324342/4773521-manual-de-interpretacion-del-codigo-nacional-de-electricidad-suministro-2001.pdf,pdf,es,Ministerio de Energía y Minas
+pe-mimem-estandares-minimos-eficiencia-energetica,Guía de estándares mínimos de eficiencia energética,https://cdn.www.gob.pe/uploads/document/file/5324343/4773521-guia-de-estandares-minimos-de-eficiencia-energetica.pdf,pdf,es,Ministerio de Energía y Minas
+pe-mimem-eficiencia-energetica,Guia de etiqueta de eficiencia energetica,https://cdn.www.gob.pe/uploads/document/file/5324344/4773521-guia-de-etiqueta-de-eficiencia-energetica.pdf,pdf,es,Ministerio de Energía y Minas
+pe-mimem-guia-mantenimiento-reles,Guía para el mantenimiento de reles,https://cdn.www.gob.pe/uploads/document/file/5324345/4773521-guia-para-elmantenimiento-de-sistemas-de-proteccion-reles.pdf,pdf,es,Ministerio de Energía y Minas
+pe-ds-024-2016-em,Reglamento de Seguridad y Salud Ocupacional en Minería,https://www.osinergmin.gob.pe/seccion/centro_documental/PlantillaMarcoLegalBusqueda/DS-024-2016-EM.pdf,pdf,es,Ministerio de Energía y Minas / Osinergmin
+osha-1910-303-en,OSHA 29 CFR 1910.303 - General Electrical Requirements,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.303,html,en,OSHA
+osha-1910-304-en,OSHA 29 CFR 1910.304 - Wiring Design and Protection,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.304,html,en,OSHA
+osha-1910-305-en,OSHA 29 CFR 1910.305 - Wiring Methods and Equipment,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.305,html,en,OSHA
+osha-1910-332-en,OSHA 29 CFR 1910.332 - Electrical Safety Training,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.332,html,en,OSHA
+osha-1910-333-en,OSHA 29 CFR 1910.333 - Electrical Safety Work Practices,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.333,html,en,OSHA
+osha-1910-334-en,OSHA 29 CFR 1910.334 - Use of Electrical Equipment,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.334,html,en,OSHA
+osha-1910-335-en,OSHA 29 CFR 1910.335 - Safeguards for Personnel Protection,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.335,html,en,OSHA
+osha-1910-137-en,OSHA 29 CFR 1910.137 - Electrical Protective Equipment,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.137,html,en,OSHA
+osha-1910-269-en,OSHA 29 CFR 1910.269 - Electric Power Generation Transmission and Distribution,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.269,html,en,OSHA
+osha-1910-147-en,OSHA 29 CFR 1910.147 - Control of Hazardous Energy Lockout Tagout,https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.147,html,en,OSHA
+uk-electricity-at-work-1989-en,UK Electricity at Work Regulations 1989,https://www.legislation.gov.uk/uksi/1989/635/data.pdf,pdf,en,UK Government
+uk-esqcr-2002-en,UK Electricity Safety Quality and Continuity Regulations 2002,https://www.legislation.gov.uk/uksi/2002/2665/data.pdf,pdf,en,UK Government
+uk-hse-hsr25-en,HSE HSR25 - Electricity at Work Regulations 1989 Guidance,https://www.hse.gov.uk/pubns/priced/hsr25.pdf,pdf,en,Health and Safety Executive (UK)
+uk-hse-hsg85-en,HSE HSG85 - Electricity at Work Safe Working Practices,https://www.hse.gov.uk/pubns/priced/hsg85.pdf,pdf,en,Health and Safety Executive (UK)
+uk-hse-gs38-en,HSE GS38 - Electrical Test Equipment for Low Voltage Systems,https://www.hse.gov.uk/pubns/priced/gs38.pdf,pdf,en,Health and Safety Executive (UK)
+au-whs-model-regs-2025-en,Australia Model Work Health and Safety Regulations (5 December 2025),https://www.safeworkaustralia.gov.au/sites/default/files/2025-12/model-whs-regulations-5_december_2025.pdf,pdf,en,Safe Work Australia
+au-electrical-risks-cop-2018-en,Australia Model Code of Practice - Managing Electrical Risks in the Workplace,https://www.safeworkaustralia.gov.au/system/files/documents/1810/model-cop-managing-electrical-risks-in-the-workplace.pdf,pdf,en,Safe Work Australia
+ca-cohsr-part-viii-en,Canada Occupational Health and Safety Regulations - Part VIII Electrical Safety,https://laws-lois.justice.gc.ca/eng/regulations/SOR-86-304/page-11.html,html,en,Justice Laws Website (Canada)
+nz-electricity-safety-2010-en,New Zealand Electricity (Safety) Regulations 2010 - Current Version,https://www.legislation.govt.nz/secondary-legislation/pco-drafted/2010/36/en/latest/,html,en,New Zealand Legislation
+eu-low-voltage-2014-35-en,EU Directive 2014/35/EU - Low Voltage Electrical Equipment Safety,https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02014L0035-20260530&qid=1792945486823,pdf,en,European Union (EUR-Lex)
+eu-work-equipment-2009-104-en,EU Directive 2009/104/EC - Safety in the Use of Work Equipment,https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32009L0104,pdf,en,European Union (EUR-Lex)

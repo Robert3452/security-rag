@@ -21,6 +21,7 @@ class Document(Base):
     chunks: Mapped[list["Chunk"]] = relationship(
         back_populates="document", cascade="all, delete-orphan"
     )
+    kind: Mapped[str] = mapped_column(server_default="pdf")
 
 
 class Chunk(Base):

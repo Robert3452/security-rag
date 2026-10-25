@@ -1,18 +1,20 @@
 import asyncio
 from dataclasses import dataclass
 from pathlib import Path
+from typing import assert_never
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.embeddings.base import Embedder
 from app.ingest.chunk import TextChunk, chunk_pages
-from app.ingest.extract import extract_pages
+from app.ingest.extract import PageText, extract_pages
+from app.ingest.html import extract_html
 from app.repositories import documents as repo
 from app.schemas.documents import DocumentMeta, IngestResult
 
 
 class EmptyDocumentError(Exception):
-    """El PDF no produjo texto utilizable"""
+    """El documento no produjo texto utilizable."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -22,14 +24,24 @@ class _Prepared:
     ocr_pages: int
 
 
-def _prepare(source: Path | bytes, language: str, embedder: Embedder) -> _Prepared:
-    pages = list(extract_pages(source, language))
+def _extract(source: Path | bytes, meta: DocumentMeta) -> list[PageText]:
+    match meta.kind:
+        case "pdf":
+            return list(extract_pages(source, meta.language))
+        case "html":
+            raw = source.read_bytes() if isinstance(source, Path) else source
+            return extract_html(raw)
+        case _:
+            assert_never(meta.kind)
+
+
+def _prepare(source: Path | bytes, meta: DocumentMeta, embedder: Embedder) -> _Prepared:
+    pages = _extract(source, meta)
     chunks = list(chunk_pages(pages))
     if not chunks:
-        raise EmptyDocumentError("El Pdf no contiene texto extraible")
+        raise EmptyDocumentError(f"El {meta.kind.upper()} no contiene texto extraíble")
 
     vectors = embedder.embed_passages([c.text for c in chunks])
-
     return _Prepared(
         chunks=list(zip(chunks, vectors, strict=True)),
         pages=len(pages),
@@ -37,10 +49,10 @@ def _prepare(source: Path | bytes, language: str, embedder: Embedder) -> _Prepar
     )
 
 
-async def ingest_pdf(
+async def ingest_document(
     session: AsyncSession, embedder: Embedder, source: Path | bytes, meta: DocumentMeta
 ) -> IngestResult:
-    prepared = await asyncio.to_thread(_prepare, source, meta.language, embedder)
+    prepared = await asyncio.to_thread(_prepare, source, meta, embedder)
     await repo.replace_document(session, meta, prepared.chunks)
     await session.commit()
 

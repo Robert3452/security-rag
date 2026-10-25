@@ -4,7 +4,7 @@ from fastapi import APIRouter, File, Form, HTTPException, UploadFile, status
 
 from app.api.deps import EmbedderDep, SessionDep
 from app.schemas.documents import DocumentMeta, IngestResult
-from app.services.ingest import EmptyDocumentError, ingest_pdf
+from app.services.ingest import EmptyDocumentError, ingest_document
 
 router = APIRouter(tags=["ingest"])
 
@@ -24,6 +24,6 @@ async def ingest(
     if not content.startswith(b"%PDF"):
         raise HTTPException(status.HTTP_415_UNSUPPORTED_MEDIA_TYPE, "El archivo no es un PDF")
     try:
-        return await ingest_pdf(session, embedder, content, meta)
+        return await ingest_document(session, embedder, content, meta)
     except EmptyDocumentError as e:
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, str(e)) from e

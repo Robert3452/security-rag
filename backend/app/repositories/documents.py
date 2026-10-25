@@ -16,7 +16,7 @@ async def replace_document(
     document = Document(
         source_id=meta.source_id, title=meta.title, language=meta.language, url=meta.url
     )
-
+    meta = meta.model_copy(update={"kind": "pdf"})
     session.add(document)
     await session.flush()
 

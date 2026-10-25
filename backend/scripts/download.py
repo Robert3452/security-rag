@@ -15,9 +15,17 @@ HEADERS = {
     "Accept": "application/pdf,text/html;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9,es;q=0.8",
 }
+KINDS = {"pdf", "html"}
 
 
-def download(client: httpx.Client, url: str, dest: Path) -> None:
+def looks_valid(head: bytes, kind: str) -> bool:
+    if kind == "pdf":
+        return head.startswith(b"%PDF-")
+    lowered = head.lower()
+    return b"<html" in lowered or b"<!doctype html" in lowered
+
+
+def download(client: httpx.Client, url: str, kind: str, dest: Path) -> None:
     tmp = dest.with_suffix(".part")
     with client.stream("GET", url) as response:
         response.raise_for_status()
@@ -26,9 +34,10 @@ def download(client: httpx.Client, url: str, dest: Path) -> None:
                 f.write(chunk)
 
     with tmp.open("rb") as f:
-        if f.read(5) != b"%PDF-":
-            tmp.unlink()
-            raise ValueError("La respuesta no es un PDF")
+        head = f.read(1024)
+    if not looks_valid(head, kind):
+        tmp.unlink()
+        raise ValueError(f"la respuesta no es un {kind.upper()} válido")
 
     tmp.rename(dest)
 
@@ -42,17 +51,22 @@ def main() -> int:
         httpx.Client(headers=HEADERS, follow_redirects=True, timeout=60) as client,
     ):
         for row in csv.DictReader(f):
-            dest = RAW_DIR / f"{row['id']}.pdf"
-            if dest.exists():
-                print(f"= {row['id']} (ya existe)")
+            source_id, kind = row["id"], row["kind"]
+            if kind not in KINDS:
+                failures += 1
+                print(f"x {source_id}: kind inválido '{kind}' (usa pdf o html)", file=sys.stderr)
                 continue
 
+            dest = RAW_DIR / f"{source_id}.{kind}"
+            if dest.exists():
+                print(f"= {source_id} (ya existe)")
+                continue
             try:
-                download(client, row["url"], dest)
-                print(f"+ {row['id']}")
+                download(client, row["url"], kind, dest)
+                print(f"+ {source_id}")
             except (httpx.HTTPError, ValueError) as e:
                 failures += 1
-                print(f"x {row['id']}: {e}", file=sys.stderr)
+                print(f"x {source_id}: {e}", file=sys.stderr)
 
     return 1 if failures else 0
 

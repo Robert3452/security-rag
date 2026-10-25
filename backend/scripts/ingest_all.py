@@ -1,15 +1,17 @@
-"""Indexa los PDFs de data/raw/ definidos en data/sources.csv."""
+"""Indexa los documentos de data/raw/ definidos en data/sources.csv."""
 
 import asyncio
 import csv
 import sys
 from pathlib import Path
 
+from pydantic import ValidationError
+
 from app.core.config import get_settings
 from app.db.session import SessionLocal, engine
 from app.embeddings.e5 import E5Embedder
 from app.schemas.documents import DocumentMeta
-from app.services.ingest import EmptyDocumentError, ingest_pdf
+from app.services.ingest import EmptyDocumentError, ingest_document
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCES = ROOT / "data" / "sources.csv"
@@ -18,42 +20,53 @@ RAW_DIR = ROOT / "data" / "raw"
 
 def load_jobs() -> tuple[list[tuple[DocumentMeta, Path]], list[str]]:
     jobs: list[tuple[DocumentMeta, Path]] = []
-    missing: list[str] = []
+    errors: list[str] = []
     with SOURCES.open(encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            path = RAW_DIR / f"{row['id']}.pdf"
+            source_id, kind = row["id"], row["kind"]
+            path = RAW_DIR / f"{source_id}.{kind}"
             if not path.exists():
-                missing.append(row["id"])
+                errors.append(f"{source_id}: falta {path.name} en data/raw/")
                 continue
-            meta = DocumentMeta.model_validate(
-                {
-                    "source_id": row["id"],
-                    "title": row["title"],
-                    "language": row["language"],
-                    "url": row["url"] or None,
-                }
-            )
+            try:
+                meta = DocumentMeta.model_validate(
+                    {
+                        "source_id": source_id,
+                        "title": row["title"],
+                        "language": row["language"],
+                        "kind": kind,
+                        "url": row["url"] or None,
+                    }
+                )
+            except ValidationError as e:
+                errors.append(
+                    f"{source_id}: fila inválida en sources.csv ({e.error_count()} errores)"
+                )
+                continue
             jobs.append((meta, path))
-    return jobs, missing
+    return jobs, errors
 
 
 async def main() -> int:
-    jobs, missing = load_jobs()
-    for source_id in missing:
-        print(f"x {source_id}: falta el PDF en data/raw/", file=sys.stderr)
+    jobs, errors = load_jobs()
+    for error in errors:
+        print(f"x {error}", file=sys.stderr)
 
     embedder = E5Embedder(get_settings().embedding_model)
-    failures = len(missing)
+    failures = len(errors)
 
     for meta, path in jobs:
         async with SessionLocal() as session:
             try:
-                r = await ingest_pdf(session, embedder, path, meta)
+                r = await ingest_document(session, embedder, path, meta)
             except EmptyDocumentError as e:
                 failures += 1
                 print(f"x {meta.source_id}: {e}", file=sys.stderr)
                 continue
-        print(f"+ {r.source_id}: {r.pages} págs, {r.chunks} chunks, {r.ocr_pages} con OCR")
+        print(
+            f"+ {r.source_id} [{meta.kind}]: {r.pages} págs,"
+            f"{r.chunks} chunks, {r.ocr_pages} con OCR"
+        )
 
     await engine.dispose()
     return 1 if failures else 0
