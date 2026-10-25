@@ -18,6 +18,10 @@ def test_needs_ocr() -> None:
     assert not needs_ocr("a" * 100)
 
 
+def test_clean_text_repairs_mojibake() -> None:
+    assert clean_text("sentido de la lÌnea y la secciÛn") == "sentido de la línea y la sección"
+
+
 def test_clean_text_converts_symbol_bullets() -> None:
     assert clean_text("\x92 Condiciones de trabajo") == "• Condiciones de trabajo"
 

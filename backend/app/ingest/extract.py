@@ -9,6 +9,10 @@ from pathlib import Path
 import pypdfium2 as pdfium
 import pytesseract
 
+# Caracteres que aparecen cuando texto Windows-1252 se decodifica como MacRoman
+_MOJIBAKE_MARKERS = "\u00b7\u00c8\u00cc\u00db\u02d9\u00d2\u00a1\u00f8\u00b8"
+_MOJIBAKE_WORD = re.compile(rf"\S*[{_MOJIBAKE_MARKERS}]\S*")
+
 MIN_QUALITY = 0.05
 OCR_SCALE = 4
 OCR_LANGS = {"es": "spa", "en": "eng"}
@@ -58,6 +62,18 @@ class PageText:
     ocr: bool
 
 
+def _fix_macroman_word(match: re.Match[str]) -> str:
+    word = match.group(0)
+    try:
+        return word.encode("mac_roman").decode("cp1252")
+    except UnicodeError:
+        return word
+
+
+def fix_mojibake(text: str) -> str:
+    return _MOJIBAKE_WORD.sub(_fix_macroman_word, text)
+
+
 def text_quality(text: str) -> float:
     tokens = [t.lower() for t in _TOKEN.findall(text)]
     if not tokens:
@@ -66,7 +82,8 @@ def text_quality(text: str) -> float:
 
 
 def clean_text(raw: str) -> str:
-    text = unicodedata.normalize("NFKC", raw)
+    text = fix_mojibake(raw)
+    text = unicodedata.normalize("NFKC", text)
     text = "\n".join(_SPACES.sub(" ", line).strip() for line in text.splitlines())
     text = _BULLET.sub("• ", text)
     text = _ICON.sub("", text)

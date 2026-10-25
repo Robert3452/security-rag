@@ -44,5 +44,6 @@ class Chunk(Base):
             "embedding",
             postgresql_using="hnsw",
             postgresql_ops={"embedding": "vector_cosine_ops"},
+            postgresql_with={"m": 24, "ef_construction": 128},
         ),
     )

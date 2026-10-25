@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.models import Chunk, Document
@@ -24,6 +24,8 @@ async def search_similar(
     k: int = 5,
     language: str | None = None,
 ) -> list[RetrievedChunk]:
+    await session.execute(text("SET LOCAL hnsw.ef_search = 200"))
+
     distance = Chunk.embedding.cosine_distance(query_embedding)
     stmt = (
         select(
